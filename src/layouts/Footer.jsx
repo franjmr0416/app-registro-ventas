@@ -7,7 +7,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className='flex justify-evenly bg-white py-2 sticky inset-x-0 bottom-0'>
+    <div className='flex justify-evenly bg-white py-2 sticky inset-x-0 bottom-0 visible lg:invisible'>
       <div className=''>
         <FaCashRegister className='text-3xl text-indigo-400' />
         <p>Ventas</p>
