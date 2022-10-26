@@ -11,7 +11,7 @@ const Nav = () => {
           </span>
         </a>
         <div>
-          <FaBars className='text-xl' />
+          <FaBars className='text-xl invisible lg:visible' />
         </div>
       </div>
     </nav>

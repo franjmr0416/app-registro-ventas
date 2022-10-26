@@ -1,3 +1,4 @@
+import Footer from './layouts/Footer'
 import List from './layouts/List'
 import Nav from './layouts/Nav'
 import PageContainer from './layouts/PageContainer'
@@ -7,6 +8,7 @@ function App() {
     <PageContainer>
       <Nav />
       <List />
+      <Footer />
     </PageContainer>
   )
 }
