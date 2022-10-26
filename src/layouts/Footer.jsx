@@ -9,19 +9,19 @@ const Footer = () => {
   return (
     <div className='flex justify-evenly bg-white py-2 sticky inset-x-0 bottom-0 visible lg:invisible'>
       <div className=''>
-        <FaCashRegister className='text-3xl text-indigo-400' />
+        <FaCashRegister className='text-3xl mx-auto text-indigo-400' />
         <p>Ventas</p>
       </div>
       <div>
-        <FaChartLine className='text-3xl' />
+        <FaChartLine className='text-3xl mx-auto' />
         <p>Gráficos</p>
       </div>
       <div>
-        <FaBars className='text-3xl' />
+        <FaBars className='text-3xl mx-auto' />
         <p>Opciones</p>
       </div>
       <div>
-        <FaPlusCircle className='text-3xl' />
+        <FaPlusCircle className='text-3xl mx-auto' />
         <p>Agregar</p>
       </div>
     </div>
