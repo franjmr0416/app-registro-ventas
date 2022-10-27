@@ -10,7 +10,13 @@ const Card = (props) => {
           <p className='pl-3'>{nombre}</p>
         </div>
         <div>
-          <span className='bg-indigo-100 text-indigo-800 text-sm font-semibold px-2.5 py-0.5 rounded'>
+          <span
+            className={`${
+              status == 'Sin pagar'
+                ? 'bg-red-100 text-red-800'
+                : 'bg-indigo-100 text-indigo-800'
+            } text-sm font-semibold px-2.5 py-0.5 rounded`}
+          >
             {status}
           </span>
         </div>
