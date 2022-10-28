@@ -1,4 +1,5 @@
 import { FaUserAlt } from 'react-icons/fa'
+import currencyFormatter from '../services/currencyFormatter'
 
 const Card = (props) => {
   const { fecha_creacion, total, status, nombre, foto } = props
@@ -23,7 +24,9 @@ const Card = (props) => {
       </div>
       <div className='flex justify-between border-t-2 pt-1'>
         <p className='text-gray-500'>{fecha_creacion}</p>
-        <span className='text-lg font-semibold'>${total}</span>
+        <span className='text-lg font-semibold'>
+          {currencyFormatter(total)}
+        </span>
       </div>
     </div>
   )
