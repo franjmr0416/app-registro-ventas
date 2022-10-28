@@ -38,6 +38,21 @@ const VentaDetalle = () => {
           <p className='font-semibold text-lg'>#Pedido: {venta.id}</p>
           <Badge status={venta.status} />
         </div>
+        <div className='flex justify-between'>
+          <p className='text-gray-600'>Fecha:</p>
+          {venta.fecha_creacion}
+        </div>
+        <div className='flex justify-between py-1 border-t-2 mt-2'>
+          <p className='text-gray-600'>Cliente:</p>
+          {}
+        </div>
+        <div className='flex justify-between py-1 border-t-2 mt-2'>
+          <p className='text-gray-600'>Productos:</p>
+        </div>
+        <div className='flex justify-between py-1 border-t-2 mt-2'>
+          <p className='text-lg'>Total:</p>
+          <span className='font-semibold'>{venta.total}</span>
+        </div>
       </div>
     </div>
   )
@@ -46,21 +61,10 @@ export default VentaDetalle
 /*
   
     
-      <div className='flex justify-between'>
-        <p className='text-gray-600'>Fecha:</p>
-        {dateFormatter(venta.fecha_creacion)}
-      </div>
-      <div className='flex justify-between py-1 border-t-2 mt-2'>
-        <p className='text-gray-600'>Cliente:</p>
-        {venta.Clientes.nombre}
-      </div>
-      <div className='flex justify-between py-1 border-t-2 mt-2'>
-        <p className='text-gray-600'>Productos:</p>
-      </div>
-      <div className='flex justify-between py-1 border-t-2 mt-2'>
-        <p className='text-lg'>Total:</p>
-        <span className='font-semibold'>{currencyFormatter(venta.total)}</span>
-      </div>  
+      
+      
+      
+       
       
       
 */
