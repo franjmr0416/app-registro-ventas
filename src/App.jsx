@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ListPage from './pages/ListPage'
 import VentaDetalle from './pages/VentaDetalle'
+import Error from './pages/Error'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Routes>
         <Route path='/' element={<ListPage />} />
         <Route path='ventadetalle' element={<VentaDetalle />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </BrowserRouter>
   )
