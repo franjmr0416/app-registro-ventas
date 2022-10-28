@@ -1,15 +1,13 @@
-import Footer from './layouts/Footer'
-import List from './layouts/List'
-import Nav from './layouts/Nav'
-import PageContainer from './layouts/PageContainer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ListPage from './pages/ListPage'
 
 function App() {
   return (
-    <PageContainer>
-      <Nav />
-      <List />
-      <Footer />
-    </PageContainer>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<ListPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
