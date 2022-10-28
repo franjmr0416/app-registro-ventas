@@ -1,5 +1,6 @@
 import { FaUserAlt } from 'react-icons/fa'
 import { currencyFormatter, dateFormatter } from '../services/formatter'
+import Badge from './Badge'
 
 const Card = (props) => {
   const { fecha_creacion, total, status, nombre, foto } = props
@@ -11,15 +12,7 @@ const Card = (props) => {
           <p className='pl-3'>{nombre}</p>
         </div>
         <div>
-          <span
-            className={`${
-              status == 'Sin pagar'
-                ? 'bg-red-100 text-red-800'
-                : 'bg-indigo-100 text-indigo-800'
-            } text-sm font-semibold px-2.5 py-0.5 rounded`}
-          >
-            {status}
-          </span>
+          <Badge status={status} />
         </div>
       </div>
       <div className='flex justify-between border-t-2 pt-1'>
