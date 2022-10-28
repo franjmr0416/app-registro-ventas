@@ -1,7 +1,9 @@
-import PageContainer from '../layouts/PageContainer'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { supabase } from '../services/supabaseClient'
+import Badge from '../components/Badge'
+import { currencyFormatter, dateFormatter } from '../services/formatter'
+import { FaArrowLeft } from 'react-icons/fa'
 
 const VentaDetalle = () => {
   const { id } = useParams()
@@ -24,11 +26,41 @@ const VentaDetalle = () => {
   }, [venta])
 
   return (
-    <div className='flex flex-col p-4'>
-      <p>#Pedido: {venta.id}</p>
-      <span>{venta.status}</span>
-      <p>Fecha: {venta.fecha_creacion}</p>
+    <div>
+      <nav className='shadow-lg p-4 flex items-center'>
+        <Link to={'/'}>
+          <FaArrowLeft className='text-2xl text-gray-400' />
+        </Link>
+        <span className='text-lg ml-2'>Compras</span>
+      </nav>
+      <div className='flex flex-col p-4'>
+        <div className='flex justify-between py-2'>
+          <p className='font-semibold text-lg'>#Pedido: {venta.id}</p>
+          <Badge status={venta.status} />
+        </div>
+      </div>
     </div>
   )
 }
 export default VentaDetalle
+/*
+  
+    
+      <div className='flex justify-between'>
+        <p className='text-gray-600'>Fecha:</p>
+        {dateFormatter(venta.fecha_creacion)}
+      </div>
+      <div className='flex justify-between py-1 border-t-2 mt-2'>
+        <p className='text-gray-600'>Cliente:</p>
+        {venta.Clientes.nombre}
+      </div>
+      <div className='flex justify-between py-1 border-t-2 mt-2'>
+        <p className='text-gray-600'>Productos:</p>
+      </div>
+      <div className='flex justify-between py-1 border-t-2 mt-2'>
+        <p className='text-lg'>Total:</p>
+        <span className='font-semibold'>{currencyFormatter(venta.total)}</span>
+      </div>  
+      
+      
+*/
