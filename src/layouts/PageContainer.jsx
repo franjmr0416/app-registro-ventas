@@ -1,6 +1,6 @@
 const PageContainer = (props) => {
   return (
-    <div className='flex flex-col w-100 h-100 bg-gray-300'>
+    <div className='flex flex-col w-screen lg:w-full justify-between bg-gray-300'>
       {props.children}
     </div>
   )

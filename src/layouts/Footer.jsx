@@ -7,7 +7,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className='flex justify-evenly bg-white py-2 sticky inset-x-0 bottom-0 visible lg:invisible h-fit'>
+    <div className='h-16 justify-evenly bg-white py-2 fixed flex inset-x-0 bottom-0 visible lg:invisible border-t-2'>
       <div className=''>
         <FaCashRegister className='text-3xl mx-auto text-indigo-400' />
         <p className='text-xs'>Ventas</p>

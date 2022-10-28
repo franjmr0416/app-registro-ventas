@@ -18,7 +18,7 @@ const List = () => {
   }, [ventas])
 
   return (
-    <div className='flex flex-col pt-1'>
+    <div className='flex flex-col pt-1 mb-20 lg:mb-0 h-screen'>
       {ventas.map((item) => {
         return (
           <Card
