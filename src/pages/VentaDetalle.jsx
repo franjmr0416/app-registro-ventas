@@ -1,15 +1,13 @@
 import PageContainer from '../layouts/PageContainer'
-import Nav from '../layouts/Nav'
+import { useParams } from 'react-router-dom'
 
-import Footer from '../layouts/Footer'
+const VentaDetalle = () => {
+  const { id } = useParams()
 
-const ListPage = () => {
   return (
     <PageContainer>
-      <Nav />
-      <div>VentaDetalle</div>
-      <Footer />
+      <div>Venta Detalle id= {id}</div>
     </PageContainer>
   )
 }
-export default ListPage
+export default VentaDetalle

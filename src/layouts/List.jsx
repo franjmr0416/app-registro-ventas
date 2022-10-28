@@ -22,7 +22,7 @@ const List = () => {
     <div className='flex flex-col pt-1 mb-20 lg:mb-0 h-screen'>
       {ventas.map((item) => {
         return (
-          <Link to={'/ventadetalle'} key={item.id}>
+          <Link to={`ventadetalle/${item.id}`} key={item.id}>
             <Card
               key={item.id}
               fecha_creacion={item.fecha_creacion}
