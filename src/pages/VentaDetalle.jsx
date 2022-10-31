@@ -44,10 +44,31 @@ const VentaDetalle = () => {
         </div>
         <div className='flex justify-between py-1 border-t-2 mt-2'>
           <p className='text-gray-600'>Cliente:</p>
-          {}
+          {venta.Clientes?.nombre}
         </div>
-        <div className='flex justify-between py-1 border-t-2 mt-2'>
+        <div className='flex flex-col py-1 border-t-2 mt-2'>
           <p className='text-gray-600'>Productos:</p>
+          <div className='grid grid-cols-8'>
+            <div className='col-span-1'>
+              {venta['Ventas-Productos']?.map((x) => {
+                return (
+                  <div className='p-2'>
+                    <span>{x.cantidad}x</span>
+                  </div>
+                )
+              })}
+            </div>
+            <div className='col-span-7'>
+              {venta.Productos?.map((x) => {
+                return (
+                  <div className='flex justify-between py-2'>
+                    <span>{x.nombre}</span>
+                    <span>{currencyFormatter(x.precio_venta)}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
         <div className='flex justify-between py-1 border-t-2 mt-2'>
           <p className='text-lg'>Total:</p>
@@ -58,13 +79,3 @@ const VentaDetalle = () => {
   )
 }
 export default VentaDetalle
-/*
-  
-    
-      
-      
-      
-       
-      
-      
-*/
