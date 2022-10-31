@@ -1,4 +1,7 @@
 const currencyFormatter = (numero) => {
+  if (isNaN(numero)) {
+    return 'Invalid number'
+  }
   const currency = new Intl.NumberFormat('es-MX', {
     style: 'currency',
     currency: 'MXN',
@@ -8,6 +11,11 @@ const currencyFormatter = (numero) => {
 }
 
 const dateFormatter = (fecha) => {
+  const regex = /^\d{4}-\d{2}-\d{2}$/
+
+  if (fecha == undefined || fecha.match(regex) === null) {
+    return 'Invalid date'
+  }
   const date = new Intl.DateTimeFormat('es-MX', {
     dateStyle: 'long',
   })

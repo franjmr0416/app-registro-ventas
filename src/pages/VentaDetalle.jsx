@@ -40,7 +40,7 @@ const VentaDetalle = () => {
         </div>
         <div className='flex justify-between'>
           <p className='text-gray-600'>Fecha:</p>
-          {venta.fecha_creacion}
+          {dateFormatter(venta.fecha_creacion)}
         </div>
         <div className='flex justify-between py-1 border-t-2 mt-2'>
           <p className='text-gray-600'>Cliente:</p>
@@ -72,7 +72,9 @@ const VentaDetalle = () => {
         </div>
         <div className='flex justify-between py-1 border-t-2 mt-2'>
           <p className='text-lg'>Total:</p>
-          <span className='font-semibold'>{venta.total}</span>
+          <span className='font-semibold'>
+            {currencyFormatter(venta.total)}
+          </span>
         </div>
       </div>
     </div>
