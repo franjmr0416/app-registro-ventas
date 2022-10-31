@@ -4,6 +4,7 @@ import {
   FaChartLine,
   FaBars,
 } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -21,8 +22,10 @@ const Footer = () => {
         <p className='text-xs'>Opciones</p>
       </div>
       <div>
-        <FaPlusCircle className='text-3xl mx-auto' />
-        <p className='text-xs'>Agregar</p>
+        <Link to={`ventaedit/0`}>
+          <FaPlusCircle className='text-3xl mx-auto' />
+          <p className='text-xs'>Agregar</p>
+        </Link>
       </div>
     </div>
   )

@@ -1,9 +1,9 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { supabase } from '../services/supabaseClient'
 import Badge from '../components/Badge'
 import { currencyFormatter, dateFormatter } from '../services/formatter'
-import { FaArrowLeft } from 'react-icons/fa'
+import Navbar from '../components/Navbar'
 
 const VentaDetalle = () => {
   const { id } = useParams()
@@ -27,12 +27,7 @@ const VentaDetalle = () => {
 
   return (
     <div>
-      <nav className='shadow-lg p-4 flex items-center'>
-        <Link to={'/'}>
-          <FaArrowLeft className='text-2xl text-gray-400' />
-        </Link>
-        <span className='text-lg ml-2'>Compras</span>
-      </nav>
+      <Navbar title={'Ventas'} />
       <div className='flex flex-col p-4'>
         <div className='flex justify-between py-2'>
           <p className='font-semibold text-lg'>#Pedido: {venta.id}</p>
