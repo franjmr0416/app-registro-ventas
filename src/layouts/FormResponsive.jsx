@@ -1,13 +1,13 @@
 import Button from '../components/Button'
 
 const FormResponsive = (props) => {
-  const { titulo, textoBoton, children } = props
+  const { titulo, textoBoton, onSubmit, children } = props
 
   return (
     <div className='p-4 flex w-full justify-center'>
       <div className='flex flex-col w-full lg:w-1/4'>
         <h2 className='font-semibold text-xl mb-4'>{titulo}</h2>
-        <form>
+        <form onSubmit={onSubmit}>
           <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-1'>
             {children}
           </div>
