@@ -21,7 +21,7 @@ const Options = () => {
           </div>
         </Link>
       </div>
-      <Footer />
+      <Footer isActive={'opciones'} />
     </div>
   )
 }

@@ -8,7 +8,7 @@ const ListPage = () => {
     <PageContainer>
       <Nav />
       <List />
-      <Footer />
+      <Footer isActive={'ventas'} />
     </PageContainer>
   )
 }
