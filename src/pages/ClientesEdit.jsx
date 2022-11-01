@@ -5,7 +5,7 @@ import FormControl from '../components/FormControl'
 import Navbar from '../components/Navbar'
 import FormResponsive from '../layouts/FormResponsive'
 
-const VentaEdit = () => {
+const ClienteEdit = () => {
   const { id } = useParams()
   const [datos, setDatos] = useState({
     nombre: '',
@@ -28,7 +28,7 @@ const VentaEdit = () => {
 
   return (
     <div className='flex flex-col'>
-      <Navbar title={'Detalle'} />
+      <Navbar title={'Clientes'} />
       <FormResponsive
         onSubmit={enviarDatos}
         titulo={'Agregar cliente'}
@@ -67,4 +67,4 @@ const VentaEdit = () => {
     </div>
   )
 }
-export default VentaEdit
+export default ClienteEdit

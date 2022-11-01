@@ -18,11 +18,11 @@ const Clientes = () => {
 
   return (
     <div className='flex flex-col'>
-      <Navbar title='Opciones' routeAdd='options' />
+      <Navbar title='Opciones' routeAdd='upsert/0' />
       <div className='flex flex-col p-4 bg-gray-200 h-screen'>
         {clientes.map((x) => {
           return (
-            <Link to={`clientes/${x.id}`}>
+            <Link to={`upsert/${x.id}`}>
               <div className='flex items-center shadow rounded-lg p-4 mb-2 bg-white'>
                 <FaIdCard className='text-xl text-indigo-700' />
                 <span className='ml-2'>{x.nombre}</span>
