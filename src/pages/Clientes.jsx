@@ -23,7 +23,10 @@ const Clientes = () => {
         {clientes.map((x) => {
           return (
             <Link to={`upsert/${x.id}`}>
-              <div className='flex items-center shadow rounded-lg p-4 mb-2 bg-white'>
+              <div
+                key={x.id}
+                className='flex items-center shadow rounded-lg p-4 mb-2 bg-white'
+              >
                 <FaIdCard className='text-xl text-indigo-700' />
                 <span className='ml-2'>{x.nombre}</span>
               </div>

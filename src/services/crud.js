@@ -7,6 +7,11 @@ const readRegisters = async (table) => {
 
 const createRegister = async (table, data) => {
   const { error } = await supabase.from(table).insert(data)
+  return error
 }
 
-export { readRegisters, createRegister }
+const updateRegister = async (table, data, id) => {
+  const { error } = await supabase.from(table).update(data).eq('id', id)
+  return error
+}
+export { readRegisters, createRegister, updateRegister }
