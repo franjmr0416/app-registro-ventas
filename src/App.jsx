@@ -5,6 +5,7 @@ import Error from './pages/Error'
 import VentaEdit from './pages/VentaEdit'
 import Options from './pages/Options'
 import Clientes from './pages/Clientes'
+import Productos from './pages/Productos'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='ventaedit/:id' element={<VentaEdit />} />
         <Route path='options' element={<Options />} />
         <Route path='options/clientes' element={<Clientes />} />
+        <Route path='options/productos' element={<Productos />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </BrowserRouter>
