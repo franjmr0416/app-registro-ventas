@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 const Options = () => {
   return (
     <div className='flex flex-col'>
-      <Navbar title={'Ventas'} />
+      <Navbar />
     </div>
   )
 }
