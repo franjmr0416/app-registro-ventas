@@ -18,8 +18,10 @@ const Footer = () => {
         <p className='text-xs'>Gráficos</p>
       </div>
       <div>
-        <FaBars className='text-3xl mx-auto' />
-        <p className='text-xs'>Opciones</p>
+        <Link to={'options'}>
+          <FaBars className='text-3xl mx-auto' />
+          <p className='text-xs'>Opciones</p>
+        </Link>
       </div>
       <div>
         <Link to={`ventaedit/0`}>
