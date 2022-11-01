@@ -10,12 +10,14 @@ const Footer = (props) => {
   const { isActive } = props
   return (
     <div className='h-16 justify-evenly bg-white py-2 fixed flex inset-x-0 bottom-0 visible lg:invisible border-t-2'>
-      <div className=''>
-        <FaCashRegister
-          className={`text-3xl mx-auto ${
-            isActive == 'ventas' ? 'text-indigo-400' : ''
-          }`}
-        />
+      <div>
+        <Link to={'/'}>
+          <FaCashRegister
+            className={`text-3xl mx-auto ${
+              isActive == 'ventas' ? 'text-indigo-400' : ''
+            }`}
+          />
+        </Link>
         <p className='text-xs'>Ventas</p>
       </div>
       <div>
