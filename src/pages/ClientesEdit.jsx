@@ -12,12 +12,11 @@ const ClienteEdit = () => {
   let navigate = useNavigate()
 
   const initialClienteState = {
-    id: null,
     nombre: '',
-    telefono: '',
-    email: '',
-    comentario: '',
-    avatar_url: '',
+    telefono: null,
+    email: null,
+    comentario: null,
+    avatar_url: null,
   }
 
   const [currentCliente, setCurrentCliente] = useState(initialClienteState)
@@ -44,15 +43,9 @@ const ClienteEdit = () => {
     if (id == 0) {
       console.log(currentCliente)
       createRegister('Clientes', currentCliente)
-      //setIsOpen(true)
     } else {
       console.log(currentCliente)
       updateRegister('Clientes', currentCliente, id)
-      /*setIsOpen(true)
-
-      if (actionState) {
-        console.log(currentCliente)
-      }*/
     }
   }
 
