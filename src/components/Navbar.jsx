@@ -1,8 +1,9 @@
 import { FaArrowLeft } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
+import ButtonDelete from '../components/ButtonDelete'
 
 const Navbar = (props) => {
-  const { title, routeAdd } = props
+  const { title, routeAdd, btnText, id, table } = props
   const navigate = useNavigate()
 
   return (
@@ -17,13 +18,14 @@ const Navbar = (props) => {
         <div>
           <Link to={routeAdd}>
             <button className='text-white bg-indigo-700 hover:bg-indigo-900 px-4 py-1 rounded-lg'>
-              Agregar
+              {btnText}
             </button>
           </Link>
         </div>
       ) : (
         <div></div>
       )}
+      {id ? <ButtonDelete table={table} id={id} /> : ''}
     </nav>
   )
 }

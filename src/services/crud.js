@@ -14,4 +14,10 @@ const updateRegister = async (table, data, id) => {
   const { error } = await supabase.from(table).update(data).eq('id', id)
   return error
 }
-export { readRegisters, createRegister, updateRegister }
+
+const deleteRegister = async (table, id) => {
+  const { error } = await supabase.from(table).delete().eq('id', id)
+  return error
+}
+
+export { readRegisters, createRegister, updateRegister, deleteRegister }

@@ -18,7 +18,7 @@ const Clientes = () => {
 
   return (
     <div className='flex flex-col'>
-      <Navbar title='Opciones' routeAdd='upsert/0' />
+      <Navbar title='Opciones' routeAdd='upsert/0' btnText={'Agregar'} />
       <div className='flex flex-col p-4 bg-gray-200 h-screen'>
         {clientes.map((x) => {
           return (

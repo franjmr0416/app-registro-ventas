@@ -5,7 +5,6 @@ import { supabase } from '../services/supabaseClient'
 import FormControl from '../components/FormControl'
 import Navbar from '../components/Navbar'
 import FormResponsive from '../layouts/FormResponsive'
-import Modal from '../components/Modal'
 
 const ClienteEdit = () => {
   const { id } = useParams()
@@ -52,11 +51,11 @@ const ClienteEdit = () => {
   return (
     <div>
       <div className='flex flex-col'>
-        <Navbar title={'Clientes'} />
+        <Navbar title={'Clientes'} id={id} table={'Clientes'} />
         <FormResponsive
           onSubmit={showConfirm}
           titulo={'Agregar cliente'}
-          textoBoton={'Registrar'}
+          textoBoton={id == 0 ? 'Registrar' : 'Actualizar'}
         >
           <FormControl
             label={'Nombre'}
