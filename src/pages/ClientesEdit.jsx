@@ -22,6 +22,7 @@ const ClienteEdit = () => {
 
   const [currentCliente, setCurrentCliente] = useState(initialClienteState)
   const [isOpen, setIsOpen] = useState(false)
+  const [actionState, setActionState] = useState(false)
 
   const getCliente = async (id) => {
     let { data, error } = await supabase.from('Clientes').select().eq('id', id)
@@ -38,14 +39,20 @@ const ClienteEdit = () => {
     setCurrentCliente({ ...currentCliente, [name]: value })
   }
 
-  const enviarDatos = (event) => {
+  const showConfirm = (event) => {
     event.preventDefault()
     if (id == 0) {
+      console.log(currentCliente)
       createRegister('Clientes', currentCliente)
+      //setIsOpen(true)
     } else {
       console.log(currentCliente)
-      setIsOpen(true)
-      //updateRegister('Clientes', currentCliente, id)
+      updateRegister('Clientes', currentCliente, id)
+      /*setIsOpen(true)
+
+      if (actionState) {
+        console.log(currentCliente)
+      }*/
     }
   }
 
@@ -54,7 +61,7 @@ const ClienteEdit = () => {
       <div className='flex flex-col'>
         <Navbar title={'Clientes'} />
         <FormResponsive
-          onSubmit={enviarDatos}
+          onSubmit={showConfirm}
           titulo={'Agregar cliente'}
           textoBoton={'Registrar'}
         >
@@ -93,9 +100,6 @@ const ClienteEdit = () => {
           />
         </FormResponsive>
       </div>
-      {isOpen && (
-        <Modal setIsOpen={setIsOpen} message={'Desea guardar los cambios?'} />
-      )}
     </div>
   )
 }

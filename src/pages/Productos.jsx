@@ -23,7 +23,7 @@ const Productos = () => {
       <div className='flex flex-col p-4 bg-gray-200 h-screen'>
         {productos.map((x) => {
           return (
-            <Link to={`productos/${x.id}`}>
+            <Link key={x.id} to={`productos/${x.id}`}>
               <div className='flex items-center justify-between shadow rounded-lg p-4 mb-2 bg-white'>
                 <div className='flex'>
                   <FaBox className='text-xl text-indigo-700' />
