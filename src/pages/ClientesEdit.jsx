@@ -20,8 +20,6 @@ const ClienteEdit = () => {
   }
 
   const [currentCliente, setCurrentCliente] = useState(initialClienteState)
-  const [isOpen, setIsOpen] = useState(false)
-  const [actionState, setActionState] = useState(false)
 
   const getCliente = async (id) => {
     let { data, error } = await supabase.from('Clientes').select().eq('id', id)
@@ -43,9 +41,11 @@ const ClienteEdit = () => {
     if (id == 0) {
       console.log(currentCliente)
       createRegister('Clientes', currentCliente)
+      navigate(-1)
     } else {
       console.log(currentCliente)
       updateRegister('Clientes', currentCliente, id)
+      navigate(-1)
     }
   }
 
