@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Card from '../components/Card'
+import { Link } from 'react-router-dom'
 import { supabase } from '../services/supabaseClient'
 
 const List = () => {
@@ -18,17 +19,19 @@ const List = () => {
   }, [ventas])
 
   return (
-    <div className='flex flex-col pt-1'>
+    <div className='flex flex-col pt-1 mb-20 lg:mb-0 h-screen'>
       {ventas.map((item) => {
         return (
-          <Card
-            key={item.id}
-            fecha_creacion={item.fecha_creacion}
-            total={item.total}
-            status={item.status}
-            nombre={item.Clientes.nombre}
-            foto={item.Clientes.avatar_url}
-          />
+          <Link to={`ventadetalle/${item.id}`} key={item.id}>
+            <Card
+              key={item.id}
+              fecha_creacion={item.fecha_creacion}
+              total={item.total}
+              status={item.status}
+              nombre={item.Clientes.nombre}
+              foto={item.Clientes.avatar_url}
+            />
+          </Link>
         )
       })}
     </div>

@@ -1,15 +1,25 @@
-import Footer from './layouts/Footer'
-import List from './layouts/List'
-import Nav from './layouts/Nav'
-import PageContainer from './layouts/PageContainer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ListPage from './pages/ListPage'
+import VentaDetalle from './pages/VentaDetalle'
+import Error from './pages/Error'
+import Options from './pages/Options'
+import Clientes from './pages/Clientes'
+import Productos from './pages/Productos'
+import ClienteEdit from './pages/ClientesEdit'
 
 function App() {
   return (
-    <PageContainer>
-      <Nav />
-      <List />
-      <Footer />
-    </PageContainer>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<ListPage />} />
+        <Route path='ventadetalle/:id' element={<VentaDetalle />} />
+        <Route path='options' element={<Options />} />
+        <Route path='options/clientes' element={<Clientes />} />
+        <Route path='/options/clientes/upsert/:id' element={<ClienteEdit />} />
+        <Route path='options/productos' element={<Productos />} />
+        <Route path='*' element={<Error />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
