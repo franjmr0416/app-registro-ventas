@@ -2,7 +2,7 @@ import { supabase } from './supabaseClient'
 
 const readOneRegister = async (table, id) => {
   const { data, error } = await supabase.from(table).select().eq('id', id)
-  return data
+  return data[0]
 }
 
 const readRegisters = async (table) => {
