@@ -25,7 +25,7 @@ const Navbar = (props) => {
       ) : (
         <div></div>
       )}
-      {id ? <ButtonDelete table={table} id={id} /> : ''}
+      {id && id != 0 ? <ButtonDelete table={table} id={id} /> : ''}
     </nav>
   )
 }

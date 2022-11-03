@@ -2,14 +2,16 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { deleteRegister } from '../services/crud'
 
-const ButtonDelete = (table, id) => {
+const ButtonDelete = (props) => {
+  const { table, id } = props
   let navigate = useNavigate()
 
   const deleteAction = () => {
     console.log(table, id)
     deleteRegister(table, id)
-    //navigate(-1)
+    navigate(-1)
   }
+
   return (
     <button
       onClick={() => deleteAction()}
