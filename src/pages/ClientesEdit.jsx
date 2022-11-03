@@ -54,7 +54,7 @@ const ClienteEdit = () => {
         <Navbar title={'Clientes'} id={id} table={'Clientes'} />
         <FormResponsive
           onSubmit={showConfirm}
-          titulo={'Agregar cliente'}
+          titulo={'Detalle cliente'}
           textoBoton={id == 0 ? 'Registrar' : 'Actualizar'}
         >
           <FormControl
