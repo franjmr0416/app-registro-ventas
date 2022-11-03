@@ -6,6 +6,7 @@ import Options from './pages/Options'
 import Clientes from './pages/Clientes'
 import Productos from './pages/Productos'
 import ClienteEdit from './pages/ClientesEdit'
+import ProductosEdit from './pages/ProductosEdit'
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <Route path='options/clientes' element={<Clientes />} />
         <Route path='/options/clientes/upsert/:id' element={<ClienteEdit />} />
         <Route path='options/productos' element={<Productos />} />
+        <Route
+          path='options/productos/upsert/:id'
+          element={<ProductosEdit />}
+        />
         <Route path='*' element={<Error />} />
       </Routes>
     </BrowserRouter>
