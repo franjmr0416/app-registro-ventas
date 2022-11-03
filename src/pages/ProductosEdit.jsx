@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import FormControl from '../components/FormControl'
 import Navbar from '../components/Navbar'
 import FormResponsive from '../layouts/FormResponsive'
@@ -11,6 +11,7 @@ import {
 
 const ProductosEdit = () => {
   const { id } = useParams()
+  let navigate = useNavigate()
 
   const initialProductoState = {
     nombre: '',
@@ -42,9 +43,11 @@ const ProductosEdit = () => {
     if (id == 0) {
       console.log(currentProducto)
       createRegister('Productos', currentProducto)
+      navigate(-1)
     } else {
       console.log(currentProducto)
       updateRegister('Productos', currentProducto, id)
+      navigate(-1)
     }
   }
   return (
