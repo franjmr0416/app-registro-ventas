@@ -7,7 +7,7 @@ const Navbar = (props) => {
   const navigate = useNavigate()
 
   return (
-    <nav className='shadow-lg p-4 flex justify-between'>
+    <nav className='shadow-lg p-4 flex justify-between bg-white'>
       <div className='flex items-center'>
         <div onClick={() => navigate(-1)}>
           <FaArrowLeft className='text-2xl text-gray-400' />
