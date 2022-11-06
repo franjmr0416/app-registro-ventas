@@ -2,6 +2,21 @@ import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa'
 
 const QuantityPicker = (props) => {
   const { quantity, setQuantity, setIsOpen } = props
+
+  const validateQuantity = (op) => {
+    switch (op) {
+      case 'add':
+        setQuantity(quantity + 1)
+        break
+      case 'min':
+        quantity == 1 ? null : setQuantity(quantity - 1)
+        break
+
+      default:
+        break
+    }
+  }
+
   return (
     <div className='absolute left-0 top-0 h-full w-full bg-gray-700/70'>
       <div className='absolute left-4 right-4 bottom-0 bg-white rounded-t-lg p-4'>
@@ -12,14 +27,14 @@ const QuantityPicker = (props) => {
           <div className='flex items-center justify-center pt-4'>
             <FaMinusCircle
               className='text-3xl text-red-600'
-              onClick={() => setQuantity(quantity - 1)}
+              onClick={() => validateQuantity('min')}
             />
             <span className='text-xl text-white bg-gray-500 p-1 rounded mx-4'>
               {quantity}
             </span>
             <FaPlusCircle
               className='text-3xl text-green-600'
-              onClick={() => setQuantity(quantity + 1)}
+              onClick={() => validateQuantity('add')}
             />
           </div>
           <div className='flex justify-evenly mt-4'>
