@@ -29,7 +29,7 @@ const QuantityPicker = (props) => {
               className='text-3xl text-red-600'
               onClick={() => validateQuantity('min')}
             />
-            <span className='text-xl text-white bg-gray-500 p-1 rounded mx-4'>
+            <span className='text-xl text-white bg-gray-400 p-1 rounded mx-4'>
               {quantity}
             </span>
             <FaPlusCircle
