@@ -26,7 +26,13 @@ const VentaEdit = () => {
           <ListDynamic
             table={'Clientes'}
             placeholder='Nombre'
-            textLabel='Cliente'
+            textLabel='Selecciona cliente'
+          />
+          <ListDynamic
+            table={'Productos'}
+            placeholder={'Producto'}
+            textLabel={'Selecciona producto'}
+            isCountable
           />
         </div>
       </div>
