@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import ListDynamic from '../layouts/ListDynamic'
+import { Link } from 'react-router-dom'
 import { currencyFormatter } from '../services/formatter'
 
 const VentaEdit = () => {
@@ -29,20 +29,24 @@ const VentaEdit = () => {
         <div className='flex flex-col p-4'>
           <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
             <span className='font-semibold text-gray-500'>Cliente</span>
-            {
-              <span className='p-2 border-2 rounded-lg'>
-                {currentVentaState.nombre_cliente
-                  ? currentVentaState.nombre_cliente
-                  : 'Seleccionar cliente'}
-              </span>
-            }
+            <div className='p-2 border-2 rounded-lg'>
+              <Link className='w-full' to={'/listselector/:cliente'}>
+                <span className='bg-indigo-300 text-white rounded p-1 shadow'>
+                  {currentVentaState.nombre_cliente
+                    ? currentVentaState.nombre_cliente
+                    : 'Seleccionar cliente'}
+                </span>
+              </Link>
+            </div>
           </div>
           <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
             <div className='flex justify-between items-center'>
               <span className='font-semibold text-gray-500'>Productos</span>
-              <button className='bg-indigo-500 text-white px-2 py-1 rounded-lg'>
-                Agregar
-              </button>
+              <Link to={'/listselector/:producto'}>
+                <button className='bg-indigo-500 text-white px-2 py-1 rounded-lg'>
+                  Agregar
+                </button>
+              </Link>
             </div>
           </div>
 
