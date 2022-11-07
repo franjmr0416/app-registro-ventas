@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { createContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
 import { currencyFormatter } from '../services/formatter'
+import ListSelector from './ListSelector'
 
 const VentaEdit = () => {
   const { id } = useParams()
@@ -17,77 +18,107 @@ const VentaEdit = () => {
     total: 0.0,
     status: 'Sin pagar',
   }
-
+  const [onSelect, setOnSelect] = useState(false)
+  const [listSelectorType, setListSelectorType] = useState('')
   const [currentVentaState, setCurretVentaState] = useState(initialVentaState)
-
-  const initialVentaProductos = []
+  const [currentCarrito, setCurrentCarrito] = useState([])
 
   return (
     <div className='bg-gray-200 h-screen'>
-      <div className='flex flex-col'>
-        <Navbar id={id} table={'Ventas'} />
-        <div className='flex flex-col p-4'>
-          <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
-            <span className='font-semibold text-gray-500'>Cliente</span>
-            <div className='p-2 border-2 rounded-lg'>
-              <Link className='w-full' to={'/listselector/cliente'}>
+      {onSelect && listSelectorType == 'cliente' ? (
+        <ListSelector
+          type={'cliente'}
+          setOnSelect={setOnSelect}
+          currentVentaState={currentVentaState}
+          setCurretVentaState={setCurretVentaState}
+        />
+      ) : null}
+      {onSelect && listSelectorType == 'producto' ? (
+        <ListSelector
+          type={'producto'}
+          setOnSelect={setOnSelect}
+          currentVentaState={currentVentaState}
+          setCurretVentaState={setCurretVentaState}
+          setCurrentCarrito={setCurrentCarrito}
+          currentCarrito={currentCarrito}
+        />
+      ) : null}
+      {onSelect ? null : (
+        <div className='flex flex-col'>
+          <Navbar id={id} table={'Ventas'} />
+
+          <div className='flex flex-col p-4'>
+            <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
+              <span className='font-semibold text-gray-500'>Cliente</span>
+              <div
+                className='p-2 border-2 rounded-lg'
+                onClick={() => {
+                  setOnSelect(true)
+                  setListSelectorType('cliente')
+                }}
+              >
                 <span className='bg-indigo-300 text-white rounded p-1 shadow'>
                   {currentVentaState.nombre_cliente
                     ? currentVentaState.nombre_cliente
                     : 'Seleccionar cliente'}
                 </span>
-              </Link>
+              </div>
             </div>
-          </div>
-          <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
-            <div className='flex justify-between items-center'>
-              <span className='font-semibold text-gray-500'>Productos</span>
-              <Link to={'/listselector/producto'}>
-                <button className='bg-indigo-500 text-white px-2 py-1 rounded-lg'>
+            <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
+              <div className='flex justify-between items-center'>
+                <span className='font-semibold text-gray-500'>Productos</span>
+
+                <button
+                  onClick={() => {
+                    setOnSelect(true)
+                    setListSelectorType('producto')
+                  }}
+                  className='bg-indigo-500 text-white px-2 py-1 rounded-lg'
+                >
                   Agregar
                 </button>
-              </Link>
+              </div>
             </div>
-          </div>
 
-          <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
-            <div className='flex items-center justify-between'>
-              <span className='font-semibold text-gray-500'>Subtotal:</span>
-              <span>{currencyFormatter(currentVentaState.subtotal)}</span>
+            <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
+              <div className='flex items-center justify-between'>
+                <span className='font-semibold text-gray-500'>Subtotal:</span>
+                <span>{currencyFormatter(currentVentaState.subtotal)}</span>
+              </div>
+              <div className='flex items-center justify-between'>
+                <span className='font-semibold text-gray-500'>Descuento:</span>
+                <span>{currencyFormatter(currentVentaState.descuento)}</span>
+              </div>
+              <div className='flex items-center justify-between'>
+                <span className='font-semibold text-gray-500 text-lg'>
+                  Total:
+                </span>
+                <span>{currencyFormatter(currentVentaState.total)}</span>
+              </div>
             </div>
-            <div className='flex items-center justify-between'>
-              <span className='font-semibold text-gray-500'>Descuento:</span>
-              <span>{currencyFormatter(currentVentaState.descuento)}</span>
-            </div>
-            <div className='flex items-center justify-between'>
-              <span className='font-semibold text-gray-500 text-lg'>
-                Total:
+            <div className='flex justify-between items-center px-2 py-3 mb-1 bg-white rounded-lg shadow-lg'>
+              <span className='font-semibold text-gray-500'>
+                Marcar como pagado
               </span>
-              <span>{currencyFormatter(currentVentaState.total)}</span>
+              <label
+                htmlFor='default-toggle'
+                className='inline-flex relative items-center cursor-pointer'
+              >
+                <input
+                  type='checkbox'
+                  value=''
+                  id='default-toggle'
+                  className='sr-only peer'
+                />
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
+              </label>
             </div>
-          </div>
-          <div className='flex justify-between items-center px-2 py-3 mb-1 bg-white rounded-lg shadow-lg'>
-            <span className='font-semibold text-gray-500'>
-              Marcar como pagado
-            </span>
-            <label
-              for='default-toggle'
-              className='inline-flex relative items-center cursor-pointer'
-            >
-              <input
-                type='checkbox'
-                value=''
-                id='default-toggle'
-                className='sr-only peer'
-              />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-indigo-600"></div>
-            </label>
-          </div>
-          <div className='text-center bg-indigo-500 text-white font-semibold hover:bg-indigo-800 py-2 rounded-lg shadow-lg shadow-indigo-500/30'>
-            Registrar Venta
+            <div className='text-center bg-indigo-500 text-white font-semibold hover:bg-indigo-800 py-2 rounded-lg shadow-lg shadow-indigo-500/30'>
+              Registrar Venta
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

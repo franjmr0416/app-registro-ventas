@@ -2,14 +2,28 @@ import { useEffect, useState } from 'react'
 import { readRegisters } from '../services/crud'
 import { FaSearch } from 'react-icons/fa'
 import QuantityPicker from '../components/QuantityPicker'
+import { useNavigate } from 'react-router-dom'
 
 const ListDynamic = (props) => {
-  const { table, placeholder, textLabel, isCountable } = props
+  const {
+    table,
+    placeholder,
+    textLabel,
+    isCountable,
+    selectedItem,
+    setSelectedItem,
+    quantity,
+    setQuantity,
+    setOnSelect,
+    currentVentaState,
+    setCurretVentaState,
+    setCurrentCarrito,
+    currentCarrito,
+  } = props
   const [items, setItems] = useState([])
-  const [selectedItem, setSelectedItem] = useState(0)
   const [query, setQuery] = useState('')
-  const [quantity, setQuantity] = useState(1)
   const [isOpen, setIsOpen] = useState(false)
+  const navigate = useNavigate()
 
   const filteredItems =
     query === ''
@@ -27,14 +41,31 @@ const ListDynamic = (props) => {
     getRows()
   }, [table])
 
-  const eventHandler = (id) => {
-    setSelectedItem(id)
-    setIsOpen(true)
+  const eventHandler = (isCliente) => {
+    if (isCliente) {
+      setCurretVentaState({
+        ...currentVentaState,
+        fk_cliente: selectedItem.id,
+        nombre_cliente: selectedItem.nombre,
+      })
+    } else {
+      setCurrentCarrito((currentCarrito) => [
+        ...currentCarrito,
+        {
+          id: selectedItem.id,
+          nombre: selectedItem.nombre,
+          cantidad: quantity,
+        },
+      ])
+    }
+    setOnSelect(false)
   }
 
   return (
-    <div className='flex flex-col p-2 rounded-lg bg-white w-full'>
-      <label className='py-2 text-lg font-semibold'>{textLabel}</label>
+    <div className='flex flex-col px-2 rounded-lg bg-white w-full'>
+      <div className='flex items-center justify-between py-2'>
+        <label className='text-lg font-semibold'>{textLabel}</label>
+      </div>
       <div className='w-full flex items-center shadow p-1 rounded-lg'>
         <input
           type={'text'}
@@ -56,18 +87,23 @@ const ListDynamic = (props) => {
                   : 'bg-white text-gray-500'
               }`}
               key={x.id}
-              onClick={() => eventHandler(x.id)}
+              onClick={() => {
+                setSelectedItem(x)
+                setIsOpen(true)
+              }}
             >
               {x.nombre}
             </div>
           )
         })}
       </div>
-      {isOpen && isCountable ? (
+      {isOpen ? (
         <QuantityPicker
           quantity={quantity}
           setQuantity={setQuantity}
           setIsOpen={setIsOpen}
+          eventHandler={eventHandler}
+          isCountable={isCountable}
         />
       ) : null}
     </div>
