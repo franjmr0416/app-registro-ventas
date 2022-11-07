@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
@@ -22,6 +22,14 @@ const VentaEdit = () => {
   const [listSelectorType, setListSelectorType] = useState('')
   const [currentVentaState, setCurretVentaState] = useState(initialVentaState)
   const [currentCarrito, setCurrentCarrito] = useState([])
+
+  const [subtotal, setSubtotal] = useState(0)
+
+  useEffect(() => {
+    currentCarrito.map((x) => {
+      setSubtotal(subtotal + x.cantidad * x.precio)
+    })
+  }, [currentCarrito])
 
   return (
     <div className='bg-gray-200 h-screen'>
@@ -79,11 +87,33 @@ const VentaEdit = () => {
                 </button>
               </div>
             </div>
+            <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
+              {currentCarrito.length > 0 ? (
+                currentCarrito.map((x) => {
+                  return (
+                    <div
+                      key={x.id}
+                      className='flex flex-col text-gray-500 border-b-2 py-2'
+                    >
+                      <span className='font-semibold'>{x.nombre}</span>
+                      <div className='flex items-center justify-between'>
+                        <span>
+                          {x.cantidad} x {currencyFormatter(x.precio)}
+                        </span>
 
+                        <span>{currencyFormatter(x.precio * x.cantidad)}</span>
+                      </div>
+                    </div>
+                  )
+                })
+              ) : (
+                <span>Sin productos agregados</span>
+              )}
+            </div>
             <div className='flex flex-col p-2 mb-1 bg-white rounded-lg shadow-lg'>
               <div className='flex items-center justify-between'>
                 <span className='font-semibold text-gray-500'>Subtotal:</span>
-                <span>{currencyFormatter(currentVentaState.subtotal)}</span>
+                <span>{currencyFormatter(subtotal)}</span>
               </div>
               <div className='flex items-center justify-between'>
                 <span className='font-semibold text-gray-500'>Descuento:</span>

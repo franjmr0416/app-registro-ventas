@@ -54,6 +54,7 @@ const ListDynamic = (props) => {
         {
           id: selectedItem.id,
           nombre: selectedItem.nombre,
+          precio: selectedItem.precio_venta,
           cantidad: quantity,
         },
       ])
