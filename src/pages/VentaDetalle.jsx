@@ -27,7 +27,11 @@ const VentaDetalle = () => {
 
   return (
     <div>
-      <Navbar title={'Ventas'} />
+      <Navbar
+        title={'Ventas'}
+        routeAdd={`/ventaedit/${id}`}
+        btnText={'Editar'}
+      />
       <div className='flex flex-col p-4'>
         <div className='flex justify-between py-2'>
           <p className='font-semibold text-lg'>#Pedido: {venta.id}</p>
