@@ -1,5 +1,10 @@
 import { supabase } from './supabaseClient'
 
+const readOneRegister = async (table, id) => {
+  const { data, error } = await supabase.from(table).select().eq('id', id)
+  return data[0]
+}
+
 const readRegisters = async (table) => {
   const { data, error } = await supabase.from(table).select()
   return data
@@ -20,4 +25,10 @@ const deleteRegister = async (table, id) => {
   return error
 }
 
-export { readRegisters, createRegister, updateRegister, deleteRegister }
+export {
+  readOneRegister,
+  readRegisters,
+  createRegister,
+  updateRegister,
+  deleteRegister,
+}

@@ -19,11 +19,11 @@ const Productos = () => {
 
   return (
     <div className='flex flex-col'>
-      <Navbar title='Opciones' routeAdd='options' btnText={'Agregar'} />
+      <Navbar title='Opciones' routeAdd='upsert/0' btnText={'Agregar'} />
       <div className='flex flex-col p-4 bg-gray-200 h-screen'>
         {productos.map((x) => {
           return (
-            <Link key={x.id} to={`productos/${x.id}`}>
+            <Link key={x.id} to={`upsert/${x.id}`}>
               <div className='flex items-center justify-between shadow rounded-lg p-4 mb-2 bg-white'>
                 <div className='flex'>
                   <FaBox className='text-xl text-indigo-700' />
