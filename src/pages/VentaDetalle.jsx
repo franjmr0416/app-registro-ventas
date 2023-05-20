@@ -18,7 +18,6 @@ const VentaDetalle = () => {
       .eq('id', id)
 
     setVenta(data[0])
-    console.log(venta)
   }
 
   useEffect(() => {

@@ -18,13 +18,13 @@ function App() {
         <Route path='ventadetalle/:id' element={<VentaDetalle />} />
         <Route path='options' element={<Options />} />
         <Route path='options/clientes' element={<Clientes />} />
-        <Route path='/options/clientes/upsert/:id' element={<ClienteEdit />} />
+        <Route path='options/clientes/upsert/:id' element={<ClienteEdit />} />
         <Route path='options/productos' element={<Productos />} />
         <Route
           path='options/productos/upsert/:id'
           element={<ProductosEdit />}
         />
-        <Route path='ventaedit/:id' element={<VentaEdit />} />
+        <Route path='/ventaedit/:id' element={<VentaEdit />} />
         <Route path='/listselector/:type' element={<ListSelector />} />
         <Route path='*' element={<Error />} />
       </Routes>
