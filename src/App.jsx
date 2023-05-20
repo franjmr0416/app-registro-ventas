@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import ListPage from './pages/ListPage'
 import VentaDetalle from './pages/VentaDetalle'
 import Error from './pages/Error'
@@ -9,26 +9,37 @@ import ClienteEdit from './pages/ClientesEdit'
 import ProductosEdit from './pages/ProductosEdit'
 import VentaEdit from './pages/VentaEdit'
 import ListSelector from './pages/ListSelector'
+import LogIn from './pages/LogIn'
+import { useEffect } from 'react'
+import { supabase } from './services/supabaseClient'
 
-function App() {
+const App = () => {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (!session) {
+        navigate('/login')
+      } else {
+        navigate('/')
+      }
+    })
+  }, [])
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<ListPage />} />
-        <Route path='ventadetalle/:id' element={<VentaDetalle />} />
-        <Route path='options' element={<Options />} />
-        <Route path='options/clientes' element={<Clientes />} />
-        <Route path='options/clientes/upsert/:id' element={<ClienteEdit />} />
-        <Route path='options/productos' element={<Productos />} />
-        <Route
-          path='options/productos/upsert/:id'
-          element={<ProductosEdit />}
-        />
-        <Route path='/ventaedit/:id' element={<VentaEdit />} />
-        <Route path='/listselector/:type' element={<ListSelector />} />
-        <Route path='*' element={<Error />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path='/' element={<ListPage />} />
+      <Route path='/login' element={<LogIn />} />
+      <Route path='ventadetalle/:id' element={<VentaDetalle />} />
+      <Route path='options' element={<Options />} />
+      <Route path='options/clientes' element={<Clientes />} />
+      <Route path='options/clientes/upsert/:id' element={<ClienteEdit />} />
+      <Route path='options/productos' element={<Productos />} />
+      <Route path='options/productos/upsert/:id' element={<ProductosEdit />} />
+      <Route path='/ventaedit/:id' element={<VentaEdit />} />
+      <Route path='/listselector/:type' element={<ListSelector />} />
+      <Route path='*' element={<Error />} />
+    </Routes>
   )
 }
 
